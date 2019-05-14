@@ -69,3 +69,4 @@ print(igra.pravilni_del_gesla())
 print(igra.nepravilni_ugibi())
 print(igra.ugibaj('k'))
 #tukej nejkej manjka 
+#hahahhahahahhahahhahh
