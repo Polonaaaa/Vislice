@@ -1,3 +1,5 @@
+import random
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = '+'
 PONOVLJENA_CRKA = 'o'
@@ -5,6 +7,9 @@ NAPACNA_CRKA = '-'
 
 ZMAGA = 'W'
 PORAZ = 'X'
+
+with open('vaja9/Vislice/besede.txt') as f:
+    bazen_besed = [beseda.strip() for beseda in f.readlines()]
 
 class Igra:
     def __init__(self, geslo):
@@ -52,21 +57,22 @@ class Igra:
         if self.poraz():
             return PORAZ
 
-with open('vaja9/vislice/besede.txt')as f :
-    bazen_besed = [beseda.strip() for beseda in f.readlines()]
+def nova_igra(self):
+    geslo = Igra(random.choice(bazen_besed))
+    return Igra(geslo)
 
-print(bazen_besed[0])
-print(bazen_besed[-1])
+# print(bazen_besed[0])
+# print(bazen_besed[-1])
 
-igra = Igra("nekaj")
-igra.crke = ['A', 'L', 'V','N']
-print(igra.napacne_crke())
-print(igra.pravilne_crke())
-print(igra.stevilo_napak())
-print(igra.zmaga())
-print(igra.poraz())
-print(igra.pravilni_del_gesla())
-print(igra.nepravilni_ugibi())
-print(igra.ugibaj('k'))
+# igra = Igra("nekaj")
+# igra.crke = ['A', 'L', 'V','N']
+# print(igra.napacne_crke())
+# print(igra.pravilne_crke())
+# print(igra.stevilo_napak())
+# print(igra.zmaga())
+# print(igra.poraz())
+# print(igra.pravilni_del_gesla())
+# print(igra.nepravilni_ugibi())
+# print(igra.ugibaj('k'))
 #tukej nejkej manjka 
-#hahahhahahahhahahhahh
+#
