@@ -3,8 +3,7 @@ import model
 def izpis_igre(igra):
     tekst = """ 
 Število preostalih poskusov: {0} 
-Neuspeli poskusi: {1}
-{2}
+{1}
 Napačne črke ({2}): {3}
     """.format(
         model.STEVILO_DOVOLJENIH_NAPAK - igra.stevilo_napak() + 1,

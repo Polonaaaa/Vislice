@@ -29,7 +29,7 @@ class Igra:
         return all(c in self.crke for c in self.geslo.upper())
 
     def poraz(self):
-        return self.stevilo_napak() >= STEVILO_DOVOLJENIH_NAPAK
+        return self.stevilo_napak() > STEVILO_DOVOLJENIH_NAPAK
 
     def pravilni_del_gesla(self):
         novi = ''
@@ -38,6 +38,7 @@ class Igra:
                 novi += c
             else :
                 novi += '_'
+            novi += ' '    
         return novi
     
     def nepravilni_ugibi(self):
