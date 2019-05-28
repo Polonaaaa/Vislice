@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
+% rebase('base.html')
 
-<body>
-
-  <h1>Vislice</h1>
   {{id_igre}} {{poskus}}
-
-  <blockquote>
-    Vislice so najboljša igra za preganjanje dolgčasa (poleg tetrisa).
-    <small>Študentje</small>
-  </blockquote>
 
   <table>
     <tr>
@@ -20,11 +11,21 @@
       <img src="../../img/{{igra.stevilo_napak()}}.jpg" alt="obesanje">
     </td>
   </table> 
-  <form action="/igra.{{id_igre}}/" method="post">
-    Črka:<input type="text" name="crka">
-    <button type="submit">Pošlji ugib</button>
+
+% if poskus == model.ZMAGA:
+  <span> Čestitke Zamgač/a si !</span>
+  <form method = 'post' action = '/nova_igra/'>
+    <input type = 'submit' value = 'Nova igra'>
   </form>
+% elif igra.poraz():
+  <span>Sožalje, več sreče prihodnjič!</span>
+  <form method = 'post' action = '/nova_igra/'>
+    <input type = 'submit' value = 'Nova igra'>
+  </form>
+% else:
+    <form action="/igra/" method="post">
+    Črka:<input type="text" name="crka" autofocus="true">
+    <button type="submit">Pošlji ugib></button>
+    </form>
 
-</body>
-
-</html>
+% end

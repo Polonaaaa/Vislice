@@ -1,5 +1,7 @@
 import random
 
+import json
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA = '+'
 PONOVLJENA_CRKA = 'o'
@@ -67,9 +69,9 @@ def nova_igra():
 
 
 class Vislice:
-    def __init__(self):
+    def __init__(self, datoteka_s_stanjem):
         self.igre = {}
-
+        self.datoteka_s_stanjem = datoteka_s_stanjem
     def prost_id_igre(self):
         return len(self.igre)
 
@@ -83,13 +85,25 @@ class Vislice:
         poskus = igra.ugibaj(crka)
         self.igre[id_igre] = (igra, poskus)
 
+    def zapisi_igre_v_datoteko(self):
+        with open(self.datoteka_s_stanjem, 'w') as f:
+            igre = {str(id_igre): {'geslo': igra.geslo, 'crke': igra.crke} for id_igre, igra in self.igre.items()}
+            json.dump(igre, f)
+
+    def nalozi_igre_iz_datoteke(self):
+        with open(self.datoteka_s_stanjem) as f:
+            igre = json.loads(f.read())
+            self.igre = {}
+            for id_igre, opis_igre in igre.items():
+                self.igre[int(id_igre)] = Igra(opis_igre['geslo'], crke=opis_igre['crke'])
+
 
 
 #########################################################
-v =Vislice()
-v.nova_igra()
-v.nova_igra()
-print(v.igre)
+# v =Vislice()
+# v.nova_igra()
+# v.nova_igra()
+# print(v.igre)
 
 
 
